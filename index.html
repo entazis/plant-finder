@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Finder - Find Your Perfect Plants</title>
+    <meta name="description" content="Discover the perfect plants for your garden. Filter by climate, light, soil type, and special traits to find plants that will thrive in your conditions.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1>Plant Finder</h1>
+            </div>
+            <p class="tagline">Discover the perfect plants for your garden</p>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 C300,100 400,0 600,60 C800,120 900,20 1200,60 L1200,120 L0,120 Z" fill="var(--bg-cream)"></path>
+            </svg>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filters Section -->
+        <section class="filters-section" id="filters">
+            <div class="filters-header">
+                <h2>🔍 Tell us about your garden</h2>
+                <button class="clear-filters-btn" id="clearFilters" title="Clear all filters">
+                    <span>Clear All</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="filter-groups">
+                <!-- Climate -->
+                <div class="filter-group">
+                    <h3>🌍 Climate</h3>
+                    <div class="filter-chips" id="climate-filters"></div>
+                </div>
+
+                <!-- Light -->
+                <div class="filter-group">
+                    <h3>💡 Light Conditions</h3>
+                    <div class="filter-chips" id="light-filters"></div>
+                </div>
+
+                <!-- Soil -->
+                <div class="filter-group">
+                    <h3>🌍 Soil Type</h3>
+                    <div class="filter-chips" id="soil-filters"></div>
+                </div>
+
+                <!-- Traits -->
+                <div class="filter-group">
+                    <h3>✨ Special Traits</h3>
+                    <div class="filter-chips" id="traits-filters"></div>
+                </div>
+            </div>
+
+            <!-- Additional Filters -->
+            <div class="secondary-filters">
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search plants by name...">
+                </div>
+                
+                <div class="category-filter">
+                    <label for="categorySelect">Category:</label>
+                    <select id="categorySelect">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="care-filter">
+                    <label for="careSelect">Care Level:</label>
+                    <select id="careSelect">
+                        <option value="">Any</option>
+                        <option value="easy">Easy 🌿</option>
+                        <option value="medium">Medium 🌱</option>
+                        <option value="hard">Expert 🌵</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="results-header">
+                <h2 id="resultsTitle">All Plants</h2>
+                <span class="results-count" id="resultsCount">50 plants</span>
+            </div>
+
+            <div class="plants-grid" id="plantsGrid">
+                <!-- Plants will be loaded here -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">🌾</div>
+                <h3>No plants found</h3>
+                <p>Try adjusting your filters to discover more plants!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Plant Detail Modal -->
+    <div class="modal-overlay" id="plantModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Plant details loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>🌱 Made with love for plant lovers everywhere</p>
+            <p class="footer-sub">Find your perfect green companions</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
