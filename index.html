@@ -136,5 +136,44 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+    // Tracking
+    (function() {
+      const site = 'plants';
+      const page = location.pathname || '/';
+      
+      // Track page visit
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          site,
+          metrics: [{
+            name: 'web_page_visits',
+            type: 'counter',
+            value: 1,
+            labels: { page }
+          }]
+        })
+      }).catch(() => {});
+      
+      // Expose trackEvent for app.js
+      window.trackEvent = function(action, category = 'interaction') {
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            site,
+            metrics: [{
+              name: 'web_events',
+              type: 'counter',
+              value: 1,
+              labels: { action, category }
+            }]
+          })
+        }).catch(() => {});
+      };
+    })();
+    </script>
 </body>
 </html>

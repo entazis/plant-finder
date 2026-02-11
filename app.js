@@ -243,6 +243,7 @@ class PlantFinder {
         document.getElementById('categorySelect').addEventListener('change', (e) => {
             this.activeFilters.category = e.target.value;
             this.renderPlants();
+            if (window.trackEvent && e.target.value) trackEvent('filter_category', e.target.value);
         });
         
         // Care level select
@@ -311,6 +312,9 @@ class PlantFinder {
     openPlantModal(plantId) {
         const plant = this.plants.find(p => p.id === plantId);
         if (!plant) return;
+        
+        // Track plant view
+        if (window.trackEvent) trackEvent('view_plant', plant.category);
         
         const modal = document.getElementById('plantModal');
         const content = document.getElementById('modalContent');
